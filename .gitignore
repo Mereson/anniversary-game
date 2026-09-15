@@ -1,0 +1,11 @@
+node_modules
+.next
+out
+*.tsbuildinfo
+next-env.d.ts
+.personalization-render
+.personalization-render-final
+.personalization-render-final2
+.personalization-short-render
+anniversary-game-personalization-questions.docx
+build_personalization_questions.py

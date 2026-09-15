@@ -1,0 +1,143 @@
+.page {
+  min-height: 100vh;
+  padding: 34px 22px 70px;
+  background: linear-gradient(155deg, #fff7f3, #fbe9ef);
+  color: #422a36;
+}
+.wrap {
+  max-width: 880px;
+  margin: 0 auto;
+}
+.topline {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+.back,
+.mute {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #a45a75;
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+}
+.mute {
+  border: 1px solid #ead5de;
+  border-radius: 100px;
+  padding: 9px 13px;
+  background: #fffaf9;
+  cursor: pointer;
+}
+.intro {
+  text-align: center;
+  padding: 53px 0 35px;
+}
+.intro p {
+  color: #c96d89;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.21em;
+}
+.intro h1 {
+  margin: 14px auto 20px;
+  font:
+    600 clamp(35px, 5vw, 54px)/1.12 "Playfair Display",
+    Georgia,
+    serif;
+  letter-spacing: -0.05em;
+  max-width: 720px;
+}
+.intro span {
+  display: block;
+  max-width: 620px;
+  margin: auto;
+  color: #8f7481;
+  font-size: 14px;
+  line-height: 1.65;
+}
+.list {
+  display: grid;
+  gap: 13px;
+}
+.cue {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  background: #fffdfc;
+  border: 1px solid #f0dfe5;
+  border-radius: 20px;
+  padding: 21px 23px;
+  box-shadow: 0 8px 25px #af708516;
+}
+.number {
+  color: #d08098;
+  font:
+    600 25px "Playfair Display",
+    Georgia,
+    serif;
+  min-width: 43px;
+}
+.description {
+  flex: 1;
+}
+.description h2 {
+  margin: 0 0 9px;
+  font:
+    600 23px "Playfair Display",
+    Georgia,
+    serif;
+  letter-spacing: -0.025em;
+}
+.description p {
+  margin: 3px 0;
+  color: #806876;
+  font-size: 13px;
+  line-height: 1.45;
+}
+.description strong {
+  color: #b65c79;
+}
+.play {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-width: 95px;
+  padding: 11px 16px;
+  border: 0;
+  border-radius: 100px;
+  color: white;
+  background: #cf6686;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 13px;
+}
+.play:hover:not(:disabled) {
+  background: #b95376;
+}
+.play:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+@media (max-width: 600px) {
+  .intro {
+    padding-top: 40px;
+  }
+  .cue {
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 18px;
+  }
+  .number {
+    min-width: 34px;
+  }
+  .description {
+    flex-basis: calc(100% - 50px);
+  }
+  .play {
+    margin-left: 44px;
+  }
+}

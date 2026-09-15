@@ -1,0 +1,1058 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap");
+@import "tailwindcss";
+
+:root {
+  --ink: #422a36;
+  --muted: #8f7481;
+  --rose: #d56283;
+  --rose-dark: #bd4b70;
+  --cream: #fffaf8;
+  --line: #f0dfe5;
+}
+* {
+  box-sizing: border-box;
+}
+html,
+body {
+  min-height: 100%;
+  margin: 0;
+}
+body {
+  font-family: "DM Sans", Arial, sans-serif;
+  color: var(--ink);
+}
+button {
+  font: inherit;
+  cursor: pointer;
+}
+button:disabled {
+  cursor: default;
+}
+button:focus-visible {
+  outline: 3px solid #a34e72;
+  outline-offset: 3px;
+}
+.game-shell {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+  background: radial-gradient(
+    circle at 50% 18%,
+    #fff6ee 0,
+    #fff9f6 38%,
+    #fcecf0 100%
+  );
+}
+.ambient {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(4px);
+  pointer-events: none;
+}
+.ambient-a {
+  width: 610px;
+  height: 610px;
+  top: -280px;
+  left: -210px;
+  background: radial-gradient(circle, #fce0dc88, transparent 68%);
+}
+.ambient-b {
+  width: 650px;
+  height: 650px;
+  right: -300px;
+  bottom: -360px;
+  background: radial-gradient(circle, #efc9dc88, transparent 70%);
+}
+.sparkle {
+  position: absolute;
+  color: #ebbdc6;
+  font-size: 24px;
+}
+.sparkle-one {
+  left: 11%;
+  top: 34%;
+}
+.sparkle-two {
+  right: 12%;
+  top: 27%;
+}
+.sparkle-three {
+  right: 19%;
+  bottom: 13%;
+}
+.topbar {
+  position: relative;
+  z-index: 1;
+  width: min(1140px, calc(100% - 48px));
+  margin: auto;
+  height: 94px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.brand {
+  border: 0;
+  background: none;
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  color: #654153;
+  font-weight: 700;
+  letter-spacing: -0.035em;
+  font-size: 17px;
+}
+.brand-mark {
+  display: grid;
+  place-items: center;
+  width: 33px;
+  height: 33px;
+  border-radius: 10px;
+  background: #d76b89;
+  color: white;
+  box-shadow: 0 6px 18px #d76b8940;
+}
+.top-actions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.chapter-label,
+.progress > span,
+.eyebrow,
+.ending-choice > span {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.21em;
+  color: #b594a0;
+}
+.icon-button {
+  width: 38px;
+  height: 38px;
+  border: 1px solid #ead7df;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  color: #986578;
+  background: #fff9fa;
+}
+.game-layout {
+  position: relative;
+  z-index: 1;
+  width: min(750px, calc(100% - 32px));
+  margin: 20px auto 0;
+}
+.progress {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 0 6px 17px;
+}
+.progress-track {
+  display: flex;
+  gap: 6px;
+  flex: 1;
+  max-width: 220px;
+}
+.progress-track i {
+  height: 5px;
+  flex: 1;
+  border-radius: 100px;
+  background: #efdae2;
+}
+.progress-track i.filled {
+  background: #d76a8c;
+}
+.progress small {
+  font-size: 11px;
+  color: #ad8798;
+}
+.story-card {
+  position: relative;
+  min-height: 570px;
+  padding: 42px 56px;
+  background: #fffdfcf0;
+  border: 1px solid #f2e4e5;
+  border-radius: 30px;
+  box-shadow:
+    0 20px 70px #af70851f,
+    0 3px 13px #a9788e12;
+  text-align: center;
+}
+.screen-enter {
+  animation: enter 0.45s ease both;
+}
+@keyframes enter {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.eyebrow {
+  color: #c96d89;
+  margin: 0 0 15px;
+}
+.story-card h1,
+.story-card h2 {
+  font-family: "Playfair Display", Georgia, serif;
+  font-weight: 600;
+  letter-spacing: -0.055em;
+  line-height: 1.12;
+  margin: 0;
+  color: #4b2c3b;
+}
+.story-card h1 {
+  font-size: clamp(49px, 8vw, 72px);
+}
+.story-card h2 {
+  font-size: clamp(34px, 5vw, 47px);
+  max-width: 570px;
+  margin: auto;
+}
+.period {
+  color: #d46887;
+}
+.lead {
+  max-width: 430px;
+  margin: 20px auto 0;
+  color: #876d7b;
+  font-size: 16px;
+  line-height: 1.75;
+}
+.support {
+  color: #947b87;
+  margin: 15px auto 26px;
+  font-size: 14px;
+  line-height: 1.6;
+}
+.primary-button,
+.secondary-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  border-radius: 100px;
+  font-weight: 700;
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
+}
+.primary-button {
+  padding: 16px 27px;
+  border: 1px solid var(--rose);
+  background: linear-gradient(135deg, #dd7492, #c95077);
+  color: #fff;
+  box-shadow: 0 9px 22px #d2668540;
+}
+.primary-button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 27px #d2668555;
+}
+.primary-button:disabled {
+  opacity: 0.5;
+}
+.primary-button.compact {
+  padding: 12px 19px;
+  font-size: 13px;
+}
+.secondary-button {
+  padding: 15px 25px;
+  border: 1px solid #e9cfda;
+  background: #fff;
+  color: #b95174;
+}
+.secondary-button:hover {
+  background: #fff4f7;
+}
+.hint {
+  color: #b098a3;
+  font-size: 12px;
+  margin: 19px auto 0;
+}
+.hero-art {
+  height: 210px;
+  width: 270px;
+  position: relative;
+  margin: 4px auto 16px;
+}
+.orbit {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  border: 1px solid #f1dce1;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+.orbit-one {
+  width: 176px;
+  height: 176px;
+}
+.orbit-two {
+  width: 238px;
+  height: 238px;
+  border-style: dashed;
+}
+.hero-heart {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 112px;
+  height: 112px;
+  transform: translate(-50%, -50%) rotate(-10deg);
+  border-radius: 36px;
+  background: linear-gradient(150deg, #fae1e8, #f4bed0);
+  display: grid;
+  place-items: center;
+  color: #d46a8b;
+  box-shadow: 0 19px 36px #d989a344;
+}
+.hero-heart svg {
+  width: 65px;
+  height: 65px;
+  filter: drop-shadow(0 7px 4px #ba4f7160);
+}
+.tiny-star {
+  position: absolute;
+  color: #d8879d;
+}
+.star-a {
+  left: 19px;
+  top: 50px;
+  font-size: 26px;
+}
+.star-b {
+  right: 22px;
+  top: 38px;
+  font-size: 36px;
+}
+.star-c {
+  right: 43px;
+  bottom: 24px;
+  font-size: 17px;
+}
+.section-icon {
+  display: grid;
+  place-items: center;
+  width: 53px;
+  height: 53px;
+  border-radius: 18px;
+  background: #fae9ee;
+  color: #d36e8c;
+  margin: 1px auto 21px;
+}
+.memory-screen,
+.dates-screen,
+.hearts-screen {
+  max-width: 590px;
+  margin: auto;
+}
+.answer-list {
+  display: grid;
+  gap: 11px;
+  text-align: left;
+}
+.answer-option {
+  border: 1px solid #eedee3;
+  border-radius: 14px;
+  background: #fff;
+  min-height: 61px;
+  padding: 9px 16px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  color: #624857;
+  font-weight: 600;
+  transition:
+    border 0.2s,
+    background 0.2s,
+    transform 0.2s;
+}
+.answer-option:hover:not(:disabled) {
+  border-color: #d996ab;
+  transform: translateY(-1px);
+}
+.answer-option.selected {
+  border-color: #d46587;
+  background: #fff2f6;
+}
+.answer-option svg {
+  margin-left: auto;
+  color: #bb8fa1;
+}
+.answer-letter {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 30px;
+  height: 30px;
+  border-radius: 9px;
+  background: #fbebf0;
+  color: #c96787;
+  font-size: 12px;
+  font-weight: 700;
+}
+.feedback {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-align: left;
+  margin-top: 18px;
+  background: #fbf0f2;
+  border-radius: 13px;
+  padding: 14px;
+  color: #a65a73;
+  font-size: 13px;
+}
+.feedback svg {
+  flex: none;
+}
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 26px;
+  min-height: 42px;
+}
+.text-button {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  border: 0;
+  background: none;
+  color: #a28090;
+  font-size: 13px;
+  font-weight: 600;
+}
+.heart-field {
+  height: 280px;
+  position: relative;
+  margin: 9px auto 17px;
+  border: 1px dashed #efd7df;
+  border-radius: 22px;
+  background: radial-gradient(circle, #fff5f7, #fffaf9 70%);
+  overflow: hidden;
+}
+.catch-heart {
+  position: absolute;
+  border: 0;
+  background: none;
+  color: #d96f90;
+  animation: bob 2.4s ease-in-out infinite;
+  filter: drop-shadow(0 7px 4px #c9778f48);
+  transition:
+    transform 0.2s,
+    opacity 0.25s;
+}
+.catch-heart:hover {
+  transform: scale(1.18);
+}
+.catch-heart.caught {
+  opacity: 0;
+  pointer-events: none;
+}
+.catch-heart svg {
+  width: 42px;
+  height: 42px;
+}
+.heart-0 {
+  left: 13%;
+  top: 18%;
+}
+.heart-1 {
+  left: 42%;
+  top: 11%;
+}
+.heart-2 {
+  left: 75%;
+  top: 18%;
+}
+.heart-3 {
+  left: 25%;
+  top: 44%;
+}
+.heart-4 {
+  left: 61%;
+  top: 40%;
+}
+.heart-5 {
+  left: 9%;
+  top: 72%;
+}
+.heart-6 {
+  left: 44%;
+  top: 70%;
+}
+.heart-7 {
+  left: 80%;
+  top: 69%;
+}
+@keyframes bob {
+  50% {
+    translate: 0 -13px;
+  }
+}
+.revealed-message {
+  min-height: 39px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+.revealed-message span {
+  padding: 5px 10px;
+  border-radius: 9px;
+  background: #fbe7ee;
+  color: #a85170;
+  font-size: 14px;
+  font-weight: 700;
+}
+.revealed-message em {
+  font-size: 13px;
+  color: #b295a1;
+}
+.complete-note {
+  font-size: 12px;
+  color: #c46685;
+}
+.date-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  text-align: left;
+}
+.date-card {
+  position: relative;
+  min-height: 138px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  padding: 17px;
+  border: 1px solid #eedee3;
+  border-radius: 17px;
+  background: #fff;
+  color: #8b7480;
+  transition:
+    transform 0.2s,
+    border 0.2s,
+    background 0.2s;
+}
+.date-card:hover {
+  transform: translateY(-2px);
+  border-color: #d995aa;
+}
+.date-card.chosen {
+  background: #fff3f6;
+  border-color: #d36889;
+}
+.date-icon {
+  font-size: 27px;
+}
+.date-card strong {
+  font-size: 14px;
+  color: #594050;
+}
+.date-card > span:nth-of-type(2) {
+  font-size: 12px;
+  line-height: 1.45;
+}
+.radio-dot {
+  position: absolute;
+  right: 18px;
+  top: 20px;
+  width: 16px;
+  height: 16px;
+  border: 1px solid #dfb9c7;
+  border-radius: 50%;
+}
+.chosen .radio-dot {
+  border: 5px solid #ce6585;
+}
+.invitation-screen {
+  padding-top: 42px;
+}
+.invite-hearts {
+  color: #d16a8a;
+  margin-bottom: 38px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 18px;
+}
+.invite-hearts span {
+  display: inline-block;
+  font-size: 31px;
+  animation: heart-float 5s ease-in-out infinite;
+}
+.invite-hearts span:nth-child(2) {
+  color: #e7a7b9;
+  font-size: 24px;
+  animation-delay: -1.8s;
+}
+.invite-hearts span:nth-child(3) {
+  animation-delay: -3.2s;
+}
+@keyframes heart-float {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-3deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(3deg);
+  }
+}
+.invitation-screen h2 {
+  max-width: 510px;
+  font-size: clamp(39px, 6vw, 59px);
+}
+.chosen-date {
+  margin: 22px auto 32px;
+  font-size: 14px;
+  color: #927888;
+}
+.chosen-date strong {
+  color: #c45d7d;
+}
+.invitation-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 11px;
+}
+.yes-button {
+  align-self: center;
+  flex: none;
+}
+.dodge-1 {
+  translate: 64px -27px;
+}
+.dodge-2 {
+  translate: -64px 26px;
+}
+.dodge-3 {
+  translate: 48px 27px;
+}
+.no-button-space {
+  position: relative;
+  width: 220px;
+  height: 105px;
+  display: grid;
+  place-items: center;
+}
+.no-button {
+  position: relative;
+  width: 96px;
+  min-width: 0;
+  height: 38px;
+  padding: 7px 9px;
+  font-size: 11px;
+  font-weight: 600;
+  transition:
+    translate 0.3s ease,
+    background 0.2s;
+}
+.dodge-note {
+  min-height: 38px;
+  max-width: 400px;
+  margin: 28px auto 0;
+  font-size: 13px;
+  color: #bd6b87;
+  line-height: 1.5;
+}
+.invitation-screen .hint {
+  margin-top: 11px;
+}
+.ending-screen {
+  padding-top: 38px;
+}
+.ending-art {
+  width: 155px;
+  height: 155px;
+  margin: 0 auto 30px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #fde5ed, #fff8f8 65%);
+  display: grid;
+  place-items: center;
+  position: relative;
+  color: #d36788;
+}
+.ending-art svg {
+  width: 80px;
+  height: 80px;
+  filter: drop-shadow(0 10px 8px #d987a55e);
+  animation: heart-float 5.5s ease-in-out infinite;
+}
+.ending-art span {
+  position: absolute;
+  font-size: 27px;
+  top: 14px;
+  right: -12px;
+}
+.ending-art span:last-child {
+  top: auto;
+  right: auto;
+  bottom: 4px;
+  left: -17px;
+}
+.ending-choice {
+  margin: 30px auto 27px;
+  padding: 14px 18px;
+  width: max-content;
+  min-width: 185px;
+  border: 1px solid #edd5df;
+  border-radius: 14px;
+  background: #fff7f9;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.ending-choice strong {
+  font-size: 15px;
+}
+.replay {
+  font-size: 13px;
+  padding: 12px 20px;
+}
+.bottom-line {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  color: #b494a0;
+  font-size: 11px;
+  margin: 24px auto 32px;
+}
+.bottom-line svg {
+  color: #d27594;
+}
+@media (max-width: 650px) {
+  .topbar {
+    height: 78px;
+    width: calc(100% - 30px);
+  }
+  .chapter-label {
+    display: none;
+  }
+  .game-layout {
+    margin-top: 8px;
+  }
+  .progress {
+    flex-wrap: wrap;
+    gap: 7px;
+  }
+  .progress > span {
+    width: 100%;
+  }
+  .progress-track {
+    max-width: none;
+  }
+  .progress small {
+    min-width: 108px;
+    text-align: right;
+  }
+  .story-card {
+    padding: 31px 22px;
+    min-height: 610px;
+    border-radius: 23px;
+  }
+  .hero-art {
+    height: 190px;
+    margin-top: 12px;
+  }
+  .date-card {
+    min-height: 143px;
+    padding: 13px;
+  }
+  .date-grid {
+    gap: 9px;
+  }
+  .invite-hearts {
+    margin-bottom: 50px;
+  }
+  .invitation-screen {
+    padding-top: 30px;
+  }
+  .ending-screen {
+    padding-top: 48px;
+  }
+}
+@media (max-width: 380px) {
+  .story-card {
+    padding: 30px 15px;
+  }
+  .date-card {
+    padding: 11px;
+  }
+  .date-card strong {
+    font-size: 13px;
+  }
+  .date-card > span:nth-of-type(2) {
+    font-size: 11px;
+  }
+  .primary-button,
+  .secondary-button {
+    padding: 14px 19px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Give each moment room to breathe, following the generous spacing of the design. */
+.game-layout {
+  width: min(800px, calc(100% - 32px));
+  margin: 36px auto 0;
+}
+.progress {
+  padding: 0 12px 28px;
+}
+.story-card {
+  min-height: 665px;
+  padding: 64px 70px;
+}
+.hero-art {
+  height: 230px;
+  margin: 12px auto 43px;
+}
+.welcome-screen .lead {
+  margin-top: 28px;
+}
+.welcome-screen .primary-button {
+  margin-top: 43px;
+}
+.welcome-screen .hint {
+  margin-top: 25px;
+}
+.section-icon {
+  margin: 3px auto 29px;
+}
+.support {
+  margin: 22px auto 38px;
+}
+.answer-list {
+  gap: 16px;
+}
+.answer-option {
+  min-height: 72px;
+  padding: 13px 20px;
+}
+.feedback {
+  margin-top: 24px;
+  padding: 17px;
+}
+.card-footer {
+  margin-top: 37px;
+}
+.heart-field {
+  height: 330px;
+  margin: 20px auto 29px;
+}
+.revealed-message {
+  min-height: 48px;
+}
+.date-grid {
+  gap: 18px;
+}
+.date-card {
+  min-height: 166px;
+  padding: 21px;
+  gap: 9px;
+}
+.invitation-screen {
+  padding-top: 66px;
+}
+.invite-hearts {
+  margin-bottom: 52px;
+}
+.chosen-date {
+  margin: 29px auto 41px;
+}
+.invitation-actions {
+  gap: 16px;
+}
+.ending-screen {
+  padding-top: 55px;
+}
+.ending-art {
+  margin-bottom: 43px;
+}
+.ending-choice {
+  margin: 38px auto 32px;
+}
+
+/* Slowly wandering background stars and two independent orbits around the heart. */
+.background-stars {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+.floating-decoration {
+  position: absolute;
+  color: #dca2b4;
+  text-shadow: 0 0 17px #e8b6c7;
+  animation: star-wander 20s ease-in-out infinite alternate;
+}
+.floating-star {
+  font-size: clamp(16px, 2vw, 27px);
+}
+.floating-heart {
+  color: #e5afbf;
+  opacity: 0.65;
+}
+.floating-heart svg {
+  width: clamp(15px, 2vw, 23px);
+  height: auto;
+}
+.floating-flower {
+  color: #dbb6aa;
+  opacity: 0.6;
+}
+.floating-flower svg {
+  width: clamp(21px, 2.5vw, 29px);
+  height: auto;
+}
+@keyframes star-wander {
+  0% {
+    transform: translate(-12px, 8px) rotate(-20deg) scale(0.8);
+    opacity: 0.35;
+  }
+  25% {
+    transform: translate(23px, -28px) rotate(16deg) scale(1);
+    opacity: 0.85;
+  }
+  50% {
+    transform: translate(-18px, -45px) rotate(38deg) scale(0.68);
+    opacity: 0.5;
+  }
+  75% {
+    transform: translate(31px, 13px) rotate(5deg) scale(1.14);
+    opacity: 0.95;
+  }
+  100% {
+    transform: translate(-9px, 31px) rotate(-18deg) scale(0.82);
+    opacity: 0.4;
+  }
+}
+.star-orbit {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  border-radius: 50%;
+  pointer-events: none;
+}
+.star-orbit-outer {
+  width: 228px;
+  height: 228px;
+  margin: -114px;
+  animation: orbit-stars 18s linear infinite;
+}
+.star-orbit-inner {
+  width: 165px;
+  height: 165px;
+  margin: -82.5px;
+  animation: orbit-stars 13s linear infinite reverse;
+}
+.star-orbit i {
+  position: absolute;
+  font-style: normal;
+  color: #d8879d;
+  text-shadow: 0 0 12px #f7c3d3;
+}
+.star-orbit-outer i:first-child {
+  left: 16px;
+  top: 27px;
+  font-size: 26px;
+}
+.star-orbit-outer i:last-child {
+  right: 3px;
+  bottom: 35px;
+  font-size: 36px;
+}
+.star-orbit-inner i {
+  right: 14px;
+  top: 4px;
+  font-size: 19px;
+}
+@keyframes orbit-stars {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 650px) {
+  .game-layout {
+    margin-top: 22px;
+  }
+  .progress {
+    padding: 0 6px 24px;
+  }
+  .story-card {
+    min-height: 690px;
+    padding: 44px 26px;
+  }
+  .hero-art {
+    height: 205px;
+    margin: 12px auto 34px;
+  }
+  .welcome-screen .primary-button {
+    margin-top: 38px;
+  }
+  .support {
+    margin: 19px auto 29px;
+  }
+  .answer-list {
+    gap: 12px;
+  }
+  .answer-option {
+    min-height: 65px;
+    padding: 10px 16px;
+  }
+  .heart-field {
+    height: 310px;
+  }
+  .date-grid {
+    gap: 12px;
+  }
+  .date-card {
+    min-height: 152px;
+    padding: 15px;
+  }
+  .invitation-screen {
+    padding-top: 48px;
+  }
+  .invite-hearts {
+    margin-bottom: 58px;
+  }
+  .chosen-date {
+    margin: 26px auto 36px;
+  }
+}
+@media (max-width: 380px) {
+  .story-card {
+    padding: 38px 17px;
+  }
+  .date-card {
+    padding: 12px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .floating-decoration,
+  .star-orbit,
+  .invite-hearts span,
+  .ending-art svg {
+    animation: none !important;
+  }
+}
