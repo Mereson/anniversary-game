@@ -15,7 +15,9 @@ export function WelcomeScreen({ onBegin }: { onBegin: () => void }) {
       <button className="primary-button" onClick={onBegin}>
         Let&apos;s begin <ArrowRight size={18} />
       </button>
-      <p className="hint">A few memories. A little magic. One question.</p>
+      <p className="hint">
+        A journey through our memories. A little magic. One important question.
+      </p>
     </div>
   );
 }

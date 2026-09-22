@@ -1,12 +1,19 @@
-import { Heart, RotateCcw } from "lucide-react";
+import { Heart, LoaderCircle, RefreshCw, RotateCcw } from "lucide-react";
 import { gameContent as copy } from "@/lib/game-content";
 
 type Props = {
   dateChoice: number | null;
+  sendStatus: "idle" | "sending" | "submitted" | "error";
+  onRetry: () => void;
   onReplay: () => void;
 };
 
-export function EndingScreen({ dateChoice, onReplay }: Props) {
+export function EndingScreen({
+  dateChoice,
+  sendStatus,
+  onRetry,
+  onReplay,
+}: Props) {
   return (
     <div className="ending-screen screen-enter">
       <div className="ending-art" aria-hidden="true">
@@ -25,6 +32,31 @@ export function EndingScreen({ dateChoice, onReplay }: Props) {
           </strong>
         </div>
       )}
+      <div className={`delivery-status delivery-${sendStatus}`} role="status">
+        {sendStatus === "sending" && (
+          <>
+            <LoaderCircle className="status-spinner" size={16} /> Sending your
+            answers…
+          </>
+        )}
+        {sendStatus === "submitted" && (
+          <>
+            <Heart size={15} fill="currentColor" /> Your answers have been sent
+            to Stephen.
+          </>
+        )}
+        {sendStatus === "error" && (
+          <>
+            <span>
+              The email could not be sent. Please keep this page open and try
+              again.
+            </span>
+            <button className="text-button" onClick={onRetry}>
+              <RefreshCw size={14} /> Try again
+            </button>
+          </>
+        )}
+      </div>
       <button className="secondary-button replay" onClick={onReplay}>
         <RotateCcw size={16} /> Play again
       </button>

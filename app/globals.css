@@ -407,6 +407,28 @@ button:focus-visible {
   color: #a65a73;
   font-size: 13px;
 }
+.heart-answer {
+  width: 100%;
+  min-height: 148px;
+  resize: vertical;
+  border: 1px solid #e9d5de;
+  border-radius: 17px;
+  padding: 18px 20px;
+  background: #fffdfc;
+  color: #594050;
+  font:
+    500 15px/1.65 "DM Sans",
+    Arial,
+    sans-serif;
+  box-shadow: inset 0 2px 8px #b6768b0a;
+}
+.heart-answer::placeholder {
+  color: #b79eaa;
+}
+.heart-answer:focus {
+  outline: 3px solid #d66d8b24;
+  border-color: #d6819c;
+}
 .feedback svg {
   flex: none;
 }
@@ -668,6 +690,44 @@ button:focus-visible {
 .invitation-screen .hint {
   margin-top: 11px;
 }
+.submission-note {
+  margin: 11px auto 0;
+  color: #b297a3;
+  font-size: 10px;
+}
+.love-note-screen {
+  max-width: 570px;
+  margin: auto;
+  padding-top: 45px;
+}
+.note-heart {
+  width: 92px;
+  height: 92px;
+  display: grid;
+  place-items: center;
+  margin: 0 auto 35px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #f9dce6, #fff7f8 68%);
+  color: #d36788;
+}
+.note-heart svg {
+  width: 48px;
+  height: 48px;
+  animation: heart-float 5s ease-in-out infinite;
+}
+.love-note-copy {
+  max-width: 510px;
+  margin: 27px auto 44px;
+}
+.love-note-copy p {
+  margin: 0 0 22px;
+  font:
+    500 clamp(23px, 3.5vw, 32px)/1.45 "Playfair Display",
+    Georgia,
+    serif;
+  letter-spacing: -0.025em;
+  color: #573746;
+}
 .ending-screen {
   padding-top: 38px;
 }
@@ -718,6 +778,31 @@ button:focus-visible {
 .replay {
   font-size: 13px;
   padding: 12px 20px;
+}
+.delivery-status {
+  min-height: 42px;
+  margin: 0 auto 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  color: #9c7183;
+  font-size: 12px;
+}
+.delivery-error {
+  flex-direction: column;
+  color: #a35d73;
+}
+.delivery-submitted {
+  color: #b85878;
+}
+.status-spinner {
+  animation: status-spin 1s linear infinite;
+}
+@keyframes status-spin {
+  to {
+    transform: rotate(360deg);
+  }
 }
 .bottom-line {
   display: flex;
