@@ -55,6 +55,9 @@ export function InvitationScreen({ dateChoice, onYes, onNo }: Props) {
           : ""}
       </p>
       <p className="hint">Whatever you choose, I&apos;m glad it&apos;s you.</p>
+      <p className="submission-note">
+        Choosing Yes sends your answers and date choice to Stephen.
+      </p>
     </div>
   );
 }

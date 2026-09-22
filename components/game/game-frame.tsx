@@ -44,14 +44,14 @@ export function GameFrame({
         <nav className="progress" aria-label="Game progress">
           <span>OUR LITTLE JOURNEY</span>
           <div className="progress-track">
-            {Array.from({ length: 6 }, (_, index) => (
+            {Array.from({ length: 7 }, (_, index) => (
               <i key={index} className={index < progress ? "filled" : ""} />
             ))}
           </div>
           <small>
             {progress === 0
               ? "Ready when you are"
-              : `${Math.min(progress, 6)} of 6 moments`}
+              : `${Math.min(progress, 7)} of 7 moments`}
           </small>
         </nav>
         <section className="story-card" aria-live="polite">

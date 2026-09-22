@@ -9,3 +9,4 @@ next-env.d.ts
 .personalization-short-render
 anniversary-game-personalization-questions.docx
 build_personalization_questions.py
+.env*
