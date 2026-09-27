@@ -7,10 +7,9 @@ import { gameContent as copy } from "@/lib/game-content";
 type Props = {
   dateChoice: number | null;
   onYes: () => void;
-  onNo: () => void;
 };
 
-export function InvitationScreen({ dateChoice, onYes, onNo }: Props) {
+export function InvitationScreen({ dateChoice, onYes }: Props) {
   const [dodgeCount, setDodgeCount] = useState(0);
   function dodge() {
     setDodgeCount((count) => count + 1);
@@ -42,7 +41,6 @@ export function InvitationScreen({ dateChoice, onYes, onNo }: Props) {
             }}
             onClick={() => {
               dodge();
-              onNo();
             }}
           >
             {copy.dodgeLabel}

@@ -33,8 +33,8 @@ export function GameFrame({
           <button
             className="icon-button"
             onClick={onSoundToggle}
-            aria-label={soundEnabled ? "Turn sound off" : "Turn sound on"}
-            title={soundEnabled ? "Sound on" : "Sound off"}
+            aria-label={soundEnabled ? "Mute music" : "Play music"}
+            title={soundEnabled ? "Music on" : "Music off"}
           >
             {soundEnabled ? <Volume2 size={18} /> : <VolumeX size={18} />}
           </button>
