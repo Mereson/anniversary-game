@@ -21,7 +21,8 @@ The answers, selected date, and final Yes are submitted through Resend from the 
 
 The default sender is `onboarding@resend.dev` for initial testing. Resend may restrict that sender to addresses associated with the Resend account; sending to arbitrary recipients requires a verified sending domain. The app describes a successful API request as submitted for delivery because API acceptance does not prove inbox receipt.
 
-Sound is enabled by default and plays after the first tap or click, as required by browsers. The player can mute it at any time. The short, original WAV cues live in `public/sounds`, and `scripts/generate_sound_cues.py` generates them. Open `/sound-review` to play every cue and compare its intended feeling with the actual sound.
+
+The MP3 in `public/sounds/background-music.mp3` plays continuously and loops for the full game. Music is enabled by default and begins immediately when browser autoplay rules allow, or on the player's first interaction. The player can mute or resume it at any time.
 
 ## Verify
 

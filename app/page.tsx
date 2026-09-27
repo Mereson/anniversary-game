@@ -9,7 +9,7 @@ import { InvitationScreen } from "@/components/game/invitation-screen";
 import { LoveNoteScreen } from "@/components/game/love-note-screen";
 import { QuestionScreen } from "@/components/game/question-screen";
 import { WelcomeScreen } from "@/components/game/welcome-screen";
-import { useRomanticSound } from "@/hooks/use-romantic-sound";
+import { useBackgroundMusic } from "@/hooks/use-background-music";
 import { gameContent } from "@/lib/game-content";
 
 type Stage =
@@ -31,7 +31,7 @@ export default function Home() {
   const [caught, setCaught] = useState<number[]>([]);
   const [dateChoice, setDateChoice] = useState<number | null>(null);
   const [sendStatus, setSendStatus] = useState<SendStatus>("idle");
-  const sound = useRomanticSound();
+  const music = useBackgroundMusic();
 
   const progress =
     stage === "welcome"
@@ -70,7 +70,6 @@ export default function Home() {
   }
 
   function nextQuestion() {
-    sound.play("next");
     if (questionIndex < gameContent.questions.length - 1)
       setQuestionIndex((index) => index + 1);
     else setStage("hearts");
@@ -78,12 +77,10 @@ export default function Home() {
 
   function catchHeart(index: number) {
     if (caught.includes(index)) return;
-    sound.play("heart");
     setCaught((previous) => [...previous, index]);
   }
 
   async function finish() {
-    sound.play("yes");
     setStage("ending");
     setSendStatus("sending");
     try {
@@ -111,25 +108,18 @@ export default function Home() {
   return (
     <GameFrame
       progress={progress}
-      soundEnabled={sound.enabled}
-      onSoundToggle={() => sound.setEnabled(!sound.enabled)}
+      soundEnabled={music.enabled}
+      onSoundToggle={() => music.setEnabled(!music.enabled)}
       onReset={reset}
     >
       {stage === "welcome" && (
-        <WelcomeScreen
-          onBegin={() => {
-            sound.play("begin");
-            setStage("questions");
-          }}
-        />
+        <WelcomeScreen onBegin={() => setStage("questions")} />
       )}
       {stage === "questions" && (
         <QuestionScreen
           index={questionIndex}
           answer={answers[questionIndex]}
           onAnswer={(answer) => {
-            if (gameContent.questions[questionIndex].type === "choice")
-              sound.play("answer");
             setAnswers((current) =>
               current.map((value, index) =>
                 index === questionIndex ? answer : value,
@@ -150,12 +140,10 @@ export default function Home() {
         <DatesScreen
           choice={dateChoice}
           onChoose={(index) => {
-            sound.play("choice");
             setDateChoice(index);
           }}
           onBack={() => setStage("hearts")}
           onNext={() => {
-            sound.play("next");
             setStage("note");
           }}
         />
@@ -164,17 +152,12 @@ export default function Home() {
         <LoveNoteScreen
           onBack={() => setStage("dates")}
           onNext={() => {
-            sound.play("invitation");
             setStage("invitation");
           }}
         />
       )}
       {stage === "invitation" && (
-        <InvitationScreen
-          dateChoice={dateChoice}
-          onYes={finish}
-          onNo={() => sound.play("no")}
-        />
+        <InvitationScreen dateChoice={dateChoice} onYes={finish} />
       )}
       {stage === "ending" && (
         <EndingScreen

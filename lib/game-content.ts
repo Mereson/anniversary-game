@@ -1,4 +1,4 @@
-const PLAYER_NAME = "Girlfriend";
+const PLAYER_NAME = "Yeti";
 const PARTNER_NAME = "Stephen";
 
 export const gameContent = {

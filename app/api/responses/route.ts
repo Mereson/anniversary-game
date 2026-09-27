@@ -79,9 +79,11 @@ export async function POST(request: Request) {
   const answerRows = answers
     .map(
       (item, index) =>
-        `<tr><td style="padding:14px 0;border-bottom:1px solid #f0dfe5"><strong style="color:#422a36">${index + 1}. ${escapeHtml(item.question)}</strong><br><span style="display:inline-block;margin-top:6px;color:#765b69;line-height:1.6">${escapeHtml(item.answer).replace(/\n/g, "<br>")}</span></td></tr>`,
+        `<tr><td style="padding:0 0 14px"><table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border:1px solid #f1dfe5;border-radius:16px;background:#fffdfc"><tr><td style="padding:20px 22px"><div style="margin-bottom:9px;font-size:11px;font-weight:700;letter-spacing:1.5px;color:#cc6d8b">FROM THE HEART · ${String(index + 1).padStart(2, "0")}</div><div style="font-family:Georgia,'Times New Roman',serif;font-size:18px;font-weight:700;line-height:1.45;color:#4b2c3b">${escapeHtml(item.question)}</div><div style="margin-top:12px;font-size:15px;line-height:1.7;color:#765b69">${escapeHtml(item.answer).replace(/\n/g, "<br>")}</div></td></tr></table></td></tr>`,
     )
     .join("");
+  const emailText = `Yeti completed the September 29 anniversary game.\n\n${answers.map((item, index) => `${index + 1}. ${item.question}\n${item.answer}`).join("\n\n")}\n\nDate choice: ${dateChoice}\nFinal answer: ${finalAnswer}`;
+  const emailHtml = `<!doctype html><html><body style="margin:0;padding:0;background:#fdf2f4"><table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#fdf2f4"><tr><td align="center" style="padding:30px 14px"><table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:640px;background:#fffaf8;border:1px solid #f0dfe5;border-radius:24px;overflow:hidden"><tr><td align="center" style="padding:42px 30px 36px;background:#f9e7ec"><div style="font-size:24px;line-height:1;color:#d56283">♥</div><div style="margin-top:16px;font-size:11px;font-weight:700;letter-spacing:2.2px;color:#bd6a84">SEPTEMBER 29 · OUR NEXT CHAPTER</div><h1 style="margin:12px 0 0;font-family:Georgia,'Times New Roman',serif;font-size:38px;line-height:1.15;color:#4b2c3b">Yeti’s answers</h1><p style="margin:13px 0 0;font-size:15px;line-height:1.6;color:#876d7b">A little record of what she shared from the heart.</p></td></tr><tr><td style="padding:28px 26px 12px"><table role="presentation" width="100%" cellpadding="0" cellspacing="0">${answerRows}</table></td></tr><tr><td style="padding:2px 26px 30px"><table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#4b2c3b;border-radius:16px"><tr><td style="padding:21px 22px;color:#fffaf8"><div style="font-size:10px;font-weight:700;letter-spacing:1.7px;color:#eab5c5">WHAT COMES NEXT</div><div style="margin-top:10px;font-size:15px;line-height:1.7"><strong>Date choice:</strong> ${escapeHtml(dateChoice)}<br><strong>Final answer:</strong> ${escapeHtml(finalAnswer)}</div></td></tr></table></td></tr><tr><td align="center" style="padding:0 26px 30px;font-size:12px;line-height:1.6;color:#aa8796">Made with love, for the story still to come&nbsp; ♥</td></tr></table></td></tr></table></body></html>`;
 
   let response: Response;
   try {
@@ -95,7 +97,8 @@ export async function POST(request: Request) {
         from: sender,
         to: [recipient],
         subject: "The Next Chapter — her answers",
-        html: `<div style="font-family:Arial,sans-serif;max-width:640px;margin:auto;color:#422a36"><h1 style="font-family:Georgia,serif">The Next Chapter</h1><p>Her September 29 game responses:</p><table style="border-collapse:collapse;width:100%">${answerRows}</table><p><strong>Date choice:</strong> ${escapeHtml(dateChoice)}</p><p><strong>Final answer:</strong> ${escapeHtml(finalAnswer)}</p></div>`,
+        html: emailHtml,
+        text: emailText,
       }),
     });
   } catch (error) {
