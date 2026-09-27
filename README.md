@@ -22,7 +22,7 @@ The answers, selected date, and final Yes are submitted through Resend from the 
 The default sender is `onboarding@resend.dev` for initial testing. Resend may restrict that sender to addresses associated with the Resend account; sending to arbitrary recipients requires a verified sending domain. The app describes a successful API request as submitted for delivery because API acceptance does not prove inbox receipt.
 
 
-The MP3 in `public/sounds/background-music.mp3` plays continuously and loops for the full game. Music is enabled by default and begins immediately when browser autoplay rules allow, or on the player's first interaction. The player can mute or resume it at any time.
+The optimized MP3 in `public/sounds/background-music-v2.mp3` is preloaded, cached, and loops for the full game. Music is enabled by default and begins immediately when browser autoplay rules allow, or on the player's first interaction. The player can mute or resume it at any time.
 
 ## Verify
 

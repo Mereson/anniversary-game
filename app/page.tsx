@@ -113,7 +113,12 @@ export default function Home() {
       onReset={reset}
     >
       {stage === "welcome" && (
-        <WelcomeScreen onBegin={() => setStage("questions")} />
+        <WelcomeScreen
+          onBegin={() => {
+            music.play();
+            setStage("questions");
+          }}
+        />
       )}
       {stage === "questions" && (
         <QuestionScreen

@@ -10,6 +10,14 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
+      <head>
+        <link
+          rel="preload"
+          href="/sounds/background-music-v2.mp3"
+          as="audio"
+          type="audio/mpeg"
+        />
+      </head>
       <body>{children}</body>
     </html>
   );
